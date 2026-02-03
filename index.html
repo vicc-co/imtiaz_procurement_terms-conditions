@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMTIAZ Terms & Conditions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf2f4',
+                            100: '#fce7eb',
+                            200: '#f8d0d9',
+                            300: '#f2aab9',
+                            400: '#e87a94',
+                            500: '#d64d70',
+                            600: '#c13a5c',
+                            700: '#7A263A', // Primary brand color
+                            800: '#611c2b',
+                            900: '#521927',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        h1, h2, h3, .display-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2d0a12;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #7A263A;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9c2f4a;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        .animate-slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+        }
+        .gradient-bg {
+            background: linear-gradient(-45deg, #2d0a12, #1a0509, #3d0f1a, #2d0a12);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        /* Glassmorphism with brand tint */
+        .glass {
+            background: rgba(61, 15, 26, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(122, 38, 58, 0.3);
+        }
+
+        /* Interactive Cards */
+        .term-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .term-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(122, 38, 58, 0.4);
+            border-color: rgba(122, 38, 58, 0.6);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            transition: width 0.3s ease;
+        }
+
+        /* Checkbox Animation */
+        .check-animation {
+            transition: all 0.3s ease;
+        }
+        .check-animation:checked + div {
+            background: linear-gradient(135deg, #7A263A, #9c2f4a);
+            border-color: #7A263A;
+        }
+        .check-animation:checked + div svg {
+            stroke-dashoffset: 0;
+        }
+
+        /* Spotlight Effect */
+        .spotlight {
+            position: fixed;
+            pointer-events: none;
+            background: radial-gradient(circle at var(--x) var(--y), rgba(122, 38, 58, 0.15) 0%, transparent 50%);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* Reading Progress */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7A263A, #c13a5c);
+            z-index: 50;
+            transition: width 0.1s;
+        }
+
+        /* Custom Selection */
+        ::selection {
+            background: rgba(122, 38, 58, 0.4);
+            color: white;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Definition Card Flip */
+        .definition-card {
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+        }
+        .definition-card.flipped {
+            transform: rotateY(180deg);
+        }
+        .definition-front, .definition-back {
+            backface-visibility: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        .definition-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Logo Animation */
+        .logo-container {
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        /* Shimmer effect for logo */
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* Maroon accent glow */
+        .glow-brand {
+            box-shadow: 0 0 30px rgba(122, 38, 58, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-[#1a0509] text-slate-200 overflow-x-hidden">
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Spotlight Effect -->
+    <div class="spotlight" id="spotlight"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-40 glass border-b border-brand-700/30 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-4 group cursor-pointer logo-container" onclick="window.scrollTo(0,0)">
+                    <div class="relative w-12 h-12 rounded-xl overflow-hidden bg-white shadow-lg shadow-brand-700/30">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5JTUCnTmEsWrB2zM_EsankiVlD6B5NnpHn156Mux8lw&s" 
+                             alt="IMTIAZ Logo" 
+                             class="w-full h-full object-contain p-1"
+                             onerror="this.src='https://via.placeholder.com/48x48/7A263A/ffffff?text=I'">
+                        <div class="absolute inset-0 shimmer pointer-events-none"></div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="display-font font-bold text-xl text-white tracking-tight">IMTIAZ</span>
+                        <span class="text-xs text-brand-300 uppercase tracking-widest">Terms & Conditions</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    <button onclick="scrollToSection('definitions')" class="text-sm font-medium text-slate-300 hover:text-brand-300 transition-colors relative group">
+                        Definitions
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-600 group-hover:w-full transition-all duration-300"></span>
+                    </button>
+                    <button onclick="scrollToSection('terms')" class="text-sm font-medium text-slate-300 hover:text-brand-300 transition-colors relative group">
+                        Terms
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-600 group-hover:w-full transition-all duration-300"></span>
+                    </button>
+                    <button onclick="scrollToSection('obligations')" class="text-sm font-medium text-slate-300 hover:text-brand-300 transition-colors relative group">
+                        Obligations
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-600 group-hover:w-full transition-all duration-300"></span>
+                    </button>
+                    <div class="flex items-center space-x-2 bg-brand-900/30 px-3 py-1.5 rounded-full border border-brand-700/30">
+                        <i data-lucide="clock" class="w-4 h-4 text-brand-400"></i>
+                        <span class="text-xs text-brand-200" id="readTime">5 min read</span>
+                    </div>
+                </div>
+
+                <button onclick="toggleMenu()" class="md:hidden p-2 rounded-lg hover:bg-brand-900/30 transition-colors border border-brand-700/30">
+                    <i data-lucide="menu" class="w-6 h-6 text-brand-300"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass border-t border-brand-700/30">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <button onclick="scrollToSection('definitions')" class="block w-full text-left px-3 py-2 rounded-lg text-slate-300 hover:bg-brand-900/30 hover:text-brand-300 transition-colors">Definitions</button>
+                <button onclick="scrollToSection('terms')" class="block w-full text-left px-3 py-2 rounded-lg text-slate-300 hover:bg-brand-900/30 hover:text-brand-300 transition-colors">Terms</button>
+                <button onclick="scrollToSection('obligations')" class="block w-full text-left px-3 py-2 rounded-lg text-slate-300 hover:bg-brand-900/30 hover:text-brand-300 transition-colors">Obligations</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 gradient-bg opacity-50"></div>
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-700/20 rounded-full blur-3xl animate-float"></div>
+        <div class="absolute bottom-20 right-10 w-96 h-96 bg-red-900/20 rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-800/10 rounded-full blur-3xl animate-pulse"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <!-- Logo Badge -->
+            <div class="inline-flex items-center justify-center mb-8 animate-slide-in">
+                <div class="relative w-24 h-24 rounded-2xl overflow-hidden bg-white shadow-2xl shadow-brand-900/50 glow-brand">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5JTUCnTmEsWrB2zM_EsankiVlD6B5NnpHn156Mux8lw&s" 
+                         alt="IMTIAZ Logo" 
+                         class="w-full h-full object-contain p-2"
+                         onerror="this.src='https://via.placeholder.com/96x96/7A263A/ffffff?text=IMTIAZ'">
+                    <div class="absolute inset-0 shimmer pointer-events-none"></div>
+                </div>
+            </div>
+
+            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-900/30 border border-brand-700/30 mb-6 animate-slide-in">
+                <span class="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></span>
+                <span class="text-sm font-medium text-brand-300">Legal Documentation</span>
+            </div>
+            
+            <h1 class="display-font text-5xl md:text-7xl font-bold text-white mb-6 leading-tight animate-slide-in" style="animation-delay: 0.1s">
+                Terms & <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-red-400">Conditions</span>
+            </h1>
+            
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-slide-in" style="animation-delay: 0.2s">
+                General Terms and Conditions for Purchase Orders, Supply of Goods, Services, and Works for IMTIAZ Developments LLC
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-in" style="animation-delay: 0.3s">
+                <button onclick="startReading()" class="group px-8 py-4 bg-brand-700 hover:bg-brand-600 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-brand-900/50 hover:shadow-brand-700/40 flex items-center space-x-2 transform hover:scale-105 border border-brand-600">
+                    <span>Start Reading</span>
+                    <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
+                </button>
+                <button onclick="downloadPDF()" class="px-8 py-4 bg-slate-900/50 hover:bg-brand-900/30 text-white rounded-xl font-semibold transition-all duration-300 border border-brand-700/30 flex items-center space-x-2 hover:border-brand-600">
+                    <i data-lucide="download" class="w-5 h-5 text-brand-400"></i>
+                    <span>Download PDF</span>
+                </button>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto animate-slide-in" style="animation-delay: 0.4s">
+                <div class="glass p-6 rounded-2xl text-center hover:bg-brand-900/20 transition-colors cursor-pointer group border border-brand-700/20">
+                    <div class="text-3xl font-bold text-white mb-1 group-hover:text-brand-400 transition-colors">38</div>
+                    <div class="text-sm text-brand-200/70">Clauses</div>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center hover:bg-brand-900/20 transition-colors cursor-pointer group border border-brand-700/20">
+                    <div class="text-3xl font-bold text-white mb-1 group-hover:text-brand-400 transition-colors">11</div>
+                    <div class="text-sm text-brand-200/70">Definitions</div>
+                </div>
+                <div class="glass p-6 rounded-2xl text-center hover:bg-brand-900/20 transition-colors cursor-pointer group border border-brand-700/20">
+                    <div class="text-3xl font-bold text-white mb-1 group-hover:text-brand-400 transition-colors">100%</div>
+                    <div class="text-sm text-brand-200/70">Compliance</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-brand-500"></i>
+        </div>
+    </section>
+
+    <!-- Interactive Definitions Section -->
+    <section id="definitions" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-4">
+                <div class="text-center md:text-left">
+                    <h2 class="display-font text-3xl md:text-4xl font-bold text-white mb-2">Definitions</h2>
+                    <p class="text-brand-200/70">Key terms used throughout this agreement</p>
+                </div>
+                <div class="flex gap-3">
+                    <button onclick="expandAllDefs()" class="px-4 py-2 bg-brand-900/30 hover:bg-brand-800/50 rounded-lg text-sm font-medium transition-colors border border-brand-700/30 text-brand-300">
+                        Expand All
+                    </button>
+                    <button onclick="flipAllCards()" class="px-4 py-2 bg-brand-900/30 hover:bg-brand-800/50 rounded-lg text-sm font-medium transition-colors border border-brand-700/30 text-brand-300">
+                        Flip All
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="definitionsGrid">
+                <!-- Definitions populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Terms Section -->
+    <section id="terms" class="py-20 bg-[#150408] relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="display-font text-3xl md:text-4xl font-bold text-white mb-4">General Terms & Conditions</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-700 to-red-600 mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="sticky top-24 z-30 mb-8 glass rounded-2xl p-4 border border-brand-700/30 hidden md:block glow-brand">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-brand-200">Reading Progress</span>
+                    <span class="text-sm font-bold text-brand-400" id="progressPercent">0%</span>
+                </div>
+                <div class="w-full bg-brand-900/50 rounded-full h-2">
+                    <div class="progress-bar bg-gradient-to-r from-brand-700 to-red-600 h-2 rounded-full" id="progressBar" style="width: 0%"></div>
+                </div>
+                <div class="flex justify-between mt-2 text-xs text-brand-300/50">
+                    <span>Start</span>
+                    <span>General Terms</span>
+                    <span>Obligations</span>
+                    <span>End</span>
+                </div>
+            </div>
+
+            <!-- Terms Content -->
+            <div class="space-y-6" id="termsContainer">
+                <!-- Terms populated by JS -->
+            </div>
+
+            <!-- Completion Section -->
+            <div class="mt-16 text-center glass rounded-3xl p-8 md:p-12 border border-brand-700/30 relative overflow-hidden glow-brand">
+                <div class="absolute inset-0 bg-gradient-to-br from-brand-800/20 to-red-900/20"></div>
+                <div class="relative z-10">
+                    <div class="w-20 h-20 bg-gradient-to-br from-brand-700 to-red-700 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-2xl shadow-brand-900/50">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h3 class="display-font text-2xl font-bold text-white mb-4">Acknowledge Terms</h3>
+                    <p class="text-brand-200/70 mb-8 max-w-lg mx-auto">By checking the box below, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions.</p>
+                    
+                    <label class="flex items-center justify-center space-x-3 cursor-pointer group">
+                        <div class="relative">
+                            <input type="checkbox" class="check-animation sr-only" id="agreeCheck" onchange="handleAgreement(this)">
+                            <div class="w-8 h-8 border-2 border-brand-700 rounded-lg flex items-center justify-center transition-all duration-300 group-hover:border-brand-500 bg-brand-900/30">
+                                <svg class="w-5 h-5 text-white stroke-current" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="stroke-dasharray: 24; stroke-dashoffset: 24; transition: stroke-dashoffset 0.3s;">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                        </div>
+                        <span class="text-lg font-medium text-brand-200 group-hover:text-white transition-colors">I agree to the Terms and Conditions</span>
+                    </label>
+
+                    <div id="successMessage" class="hidden mt-6 p-4 bg-green-900/30 border border-green-700/30 rounded-xl text-green-400 animate-pulse">
+                        <div class="flex items-center justify-center space-x-2">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                            <span class="font-semibold">Agreement acknowledged successfully!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0f0305] border-t border-brand-900/30 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 h-10 rounded-lg overflow-hidden bg-white shadow-lg shadow-brand-900/30">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5JTUCnTmEsWrB2zM_EsankiVlD6B5NnpHn156Mux8lw&s" 
+                             alt="IMTIAZ Logo" 
+                             class="w-full h-full object-contain p-1"
+                             onerror="this.src='https://via.placeholder.com/40x40/7A263A/ffffff?text=I'">
+                    </div>
+                    <div>
+                        <span class="display-font font-bold text-lg text-white block">IMTIAZ</span>
+                        <span class="text-xs text-brand-400">Developments LLC</span>
+                    </div>
+                </div>
+                <div class="text-brand-300/50 text-sm text-center md:text-right">
+                    <p>© 2024 IMTIAZ Developments LLC. All rights reserved.</p>
+                    <p class="mt-1 text-xs">UAE Laws govern this contract</p>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="p-2 text-brand-400 hover:text-white hover:bg-brand-900/30 rounded-lg transition-all border border-transparent hover:border-brand-700/30">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </button>
+                    <button class="p-2 text-brand-400 hover:text-white hover:bg-brand-900/30 rounded-lg transition-all border border-transparent hover:border-brand-700/30">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </button>
+                    <button class="p-2 text-brand-400 hover:text-white hover:bg-brand-900/30 rounded-lg transition-all border border-transparent hover:border-brand-700/30">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Data
+        const definitions = [
+            { term: "Owner (Company)", def: "All Companies belonging to IMTIAZ's Group and its affiliates, legal successors in title and permitted assigns for which all the Goods, Services and other items provided by Seller and its Sub-Seller under Purchase Order." },
+            { term: "PO", def: "Purchase Order and amendments thereof and the specifications and other documents/papers referred to therein." },
+            { term: "Notification of Award", def: "The Date defined in the Purchase Order as the posting date and is the date on which this Purchase Order between Owner and Seller is in effect." },
+            { term: "Validity", def: "The time frame up to which the PO remain Valid. Upon the expiry of this term the PO shall become void & the Owner shall not be responsible for any delivery made by the seller." },
+            { term: "Goods and Services", def: "All items or services to be provided under Purchase Order." },
+            { term: "Seller", def: "The person, firm or company with whom Owner has placed Purchase Order. It shall also encompass such terms as Vendor, Seller, Manufacturer, Bidder, service provider and Subcontractor." },
+            { term: "Sub-Seller", def: "Any person, firm or company other than Owner, supplying Goods in connection with Purchase Order to Seller." },
+            { term: "Sub-Order", def: "An order placed by Seller on the Sub-Seller." },
+            { term: "Site", def: "The location at which the work is ongoing or where the goods or service are to be delivered and includes any land designated by the Owner as being within the Site." },
+            { term: "End User", def: "The actual user of material at the site." },
+            { term: "IMTIAZ", def: "IMTIAZ Developments LLC" }
+        ];
+
+        const terms = [
+            { num: "1", title: "Undertaking of Performance", content: "The Seller by way of his submission of quotation to the Company, hereby undertake that it has all the knowledge, skills and resources, and is competent to undertake such award of work and it has all the legal conformance and permits for doing such works..." },
+            { num: "2", title: "Acceptance", content: "The order shall be binding upon the seller when received. If within 24 hours from the award of work, no written contest is made by the seller, the PO shall be considered deemed accepted..." },
+            { num: "3", title: "Quality", content: "Goods/Services supplied against the Purchase order must, in all respect, conform to the specifications given out in this order and approved samples' specifications..." },
+            { num: "4", title: "Documentation", content: "Domestic: The Seller is under obligation to provide all necessary documents viz. Invoice, C.O.A (Certificate of Analysis), Material Test Report, Warrantee Certificate... Imports: Exporter is under obligation to provide following documents in triplicate..." },
+            { num: "5", title: "Quantity", content: "Where the nature of material ordered is such that certain normal excess/ shortage is likely to occur, excess/short supply will be acceptable up to maximum extent of 10% of the ordered quantity..." },
+            { num: "6", title: "Weight", content: "Unless otherwise stipulated, weight recorded at company's designated place of Business shall be deemed as final." },
+            { num: "7", title: "Time of Delivery", content: "Goods/Service against the order must be delivered at company's designated place of business by the date stipulated in PO OR as communicated by the end user..." },
+            { num: "8", title: "Suspension", content: "Deliveries against the order shall be liable for suspension or cancellation at the request of company and at the cost of seller in the event of strikes, accidents, act of God or any other disabling circumstances..." },
+            { num: "9", title: "Packing & Risk", content: "Seller shall ensure suitable, secure and trans-worthy packing of all goods supplied against the order to protect against any damage, wastage, deterioration and contamination..." },
+            { num: "10", title: "Jurisdiction", content: "Any dispute arising out of this contract shall lie within the jurisdiction of the courts of UAE. The UAE Laws shall govern the contract in all respects..." },
+            { num: "11", title: "Risk & Title", content: "The risk and title of Goods or Service or Works shall pass on from the seller to the company only upon goods being compliant to the complete specification..." },
+            { num: "12", title: "Sub-Contract Material", content: "Unless otherwise exceptionally agreed in writing, the seller undertakes and shall ensure all the resources required for carrying out the awarded Contact scope..." },
+            { num: "13", title: "General Obligations", content: "Standard of Works: The Seller shall install, test and commission the Works properly and in accordance with the Agreement..." },
+            { num: "14", title: "Warranty", content: "The Supplier guarantees to COMPANY that: All goods supplied under the Purchase Order are free from defects in material, workmanship and design..." },
+            { num: "15", title: "General Liability", content: "Seller's liability for actual damage for any cause whatsoever shall not be limited to the refund of any amount paid towards advance..." },
+            { num: "16", title: "Termination", content: "COMPANY shall have the right to terminate the Purchase Order if the Supplier becomes insolvent, bankrupt, or enters into liquidation..." },
+            { num: "17", title: "Prices", content: "The prices of the Goods, Services and Works as specified in the PO shall be Fixed and not subject to any escalation unless otherwise permitted..." },
+            { num: "18", title: "Diesel", content: "There will not be any change in prices of goods if the fluctuation in the prices of diesel is less than 25%..." },
+            { num: "19", title: "Payment", content: "Unless otherwise stipulated, payment shall be made within 120 days from the receipt of goods as per normal accepted business practice..." },
+            { num: "20", title: "Client Nominated Subcontractor", content: "All payments for the work executed or goods, materials, plant or services supplied by any Client Nominated Subcontractor..." },
+            { num: "21", title: "Deferred Payment Scheme", content: "During the execution of the Purchase Order, the Owner may request the Seller to organize the payments under valid deferred Payment Scheme..." },
+            { num: "22", title: "Liability and Insurance", content: "Unless otherwise stipulated, goods, service and works supplied against the order are comprehensively insured by Seller..." },
+            { num: "23", title: "Inspection", content: "The Company shall accept the goods after making inspection with regard to the quality, specifications and descriptions..." },
+            { num: "24", title: "Conflict of Interest", content: "Each party shall exercise reasonable care and diligence to prevent any actions or conditions which could result in a conflict with the best interests of the other party..." },
+            { num: "25", title: "QSHE", content: "Seller shall ensure that all goods and services provided by him strictly meet the QSHE requirements of UAE Laws..." },
+            { num: "26", title: "Claims and Liens", content: "COMPANY shall have a first and paramount lien on the goods and all materials and equipment forming a part thereof..." },
+            { num: "27", title: "Consequential Loss", content: "COMPANY shall not be liable for any loss of profit or consequential loss whatsoever caused or occasioned to the Supplier..." },
+            { num: "28", title: "Waiver", content: "None of the terms, provisions or conditions of the Agreement shall be considered waived by Company Management unless a waiver is given in writing..." },
+            { num: "29", title: "Hazardous Chemicals", content: "Seller shall provide MSDS for the hazardous products and will also give the Transport Emergency Card TREM card to the transporter." },
+            { num: "30", title: "Labor Laws", content: "It is the sole responsibility of the seller to abide by all the rules and regulations of Government of UAE..." },
+            { num: "31", title: "Intellectual Property", content: "Seller shall warrant that goods supplied against order do not & shall not infringe any Design, Patent or Trade Mark of any 3rd party..." },
+            { num: "32", title: "Indemnity", content: "The Seller shall indemnify, defend and hold the Company, and its officers, employees and agents of each of them harmless..." },
+            { num: "33", title: "Non-Assignment", content: "Seller without prior written consent of the company cannot assign any part or whole of this contract." },
+            { num: "34", title: "Modifications", content: "Any modification to this contract shall be binding on the parties when made in writing to the other and signed off by both the parties." },
+            { num: "35", title: "Entry/Limitation", content: "This contract constitutes the entire Agreement between the parties with respect to subject matter and supersedes any previous understanding..." },
+            { num: "36", title: "Language", content: "All documents pertaining to the Purchase Order including correspondence, operating and maintenance manuals/instructions..." },
+            { num: "37", title: "Headings", content: "The headings set forth herein are for the sake of convenience only shall not effect this Terms and condition or its interpretation." },
+            { num: "38", title: "Severability", content: "Each provision, section and paragraph of this Terms & Condition is intended to be severable..." }
+        ];
+
+        // Populate Definitions
+        const defContainer = document.getElementById('definitionsGrid');
+        definitions.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'relative h-48 cursor-pointer group perspective-1000';
+            card.innerHTML = `
+                <div class="definition-card w-full h-full" id="def-${index}" onclick="flipCard(${index})">
+                    <div class="definition-front glass rounded-2xl p-6 border border-brand-700/30 flex flex-col justify-between hover:border-brand-500/50 transition-colors bg-[#1f080e]">
+                        <div class="flex items-start justify-between">
+                            <span class="text-xs font-bold text-brand-400 bg-brand-900/30 px-2 py-1 rounded border border-brand-700/30">DEF ${index + 1}</span>
+                            <i data-lucide="rotate-ccw" class="w-4 h-4 text-brand-600 group-hover:text-brand-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mt-2 group-hover:text-brand-300 transition-colors">${item.term}</h3>
+                        <p class="text-xs text-brand-400/50 mt-2 flex items-center gap-1">
+                            <i data-lucide="eye" class="w-3 h-3"></i>
+                            Click to reveal
+                        </p>
+                    </div>
+                    <div class="definition-back glass rounded-2xl p-6 border border-brand-600/30 bg-[#2d0a12] flex items-center overflow-y-auto">
+                        <p class="text-sm text-brand-100/90 leading-relaxed">${item.def}</p>
+                    </div>
+                </div>
+            `;
+            defContainer.appendChild(card);
+        });
+
+        // Populate Terms
+        const termsContainer = document.getElementById('termsContainer');
+        terms.forEach((item, index) => {
+            const termEl = document.createElement('div');
+            termEl.className = 'term-card glass rounded-2xl p-6 md:p-8 border border-brand-700/30 relative overflow-hidden group bg-[#1f080e]';
+            termEl.id = `term-${index}`;
+            termEl.innerHTML = `
+                <div class="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-brand-700 to-red-700 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-900/30 border border-brand-700/30 flex items-center justify-center group-hover:bg-brand-700 group-hover:border-brand-600 transition-all duration-300">
+                        <span class="text-lg font-bold text-brand-400 group-hover:text-white">${item.num}</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-xl font-bold text-white mb-3 group-hover:text-brand-400 transition-colors">${item.title}</h3>
+                        <p class="text-brand-200/70 leading-relaxed text-sm md:text-base">${item.content}</p>
+                    </div>
+                    <button onclick="markAsRead(${index})" class="flex-shrink-0 p-2 rounded-lg hover:bg-brand-900/30 transition-colors text-brand-700 hover:text-green-500" id="check-${index}">
+                        <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div class="mt-4 pt-4 border-t border-brand-800/30 flex items-center justify-between text-xs text-brand-400/50">
+                    <span class="flex items-center gap-1">
+                        <i data-lucide="file-text" class="w-3 h-3"></i>
+                        Clause ${item.num} of 38
+                    </span>
+                    <span class="flex items-center gap-1">
+                        <i data-lucide="clock" class="w-3 h-3"></i>
+                        <span>1 min read</span>
+                    </span>
+                </div>
+            `;
+            termsContainer.appendChild(termEl);
+        });
+
+        // Re-initialize icons after dynamic content
+        lucide.createIcons();
+
+        // Spotlight Effect
+        document.addEventListener('mousemove', (e) => {
+            const spotlight = document.getElementById('spotlight');
+            spotlight.style.setProperty('--x', e.clientX + 'px');
+            spotlight.style.setProperty('--y', e.clientY + 'px');
+        });
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            
+            document.getElementById('readingProgress').style.width = scrolled + "%";
+            document.getElementById('progressBar').style.width = scrolled + "%";
+            document.getElementById('progressPercent').textContent = Math.round(scrolled) + "%";
+
+            // Navbar transparency
+            const navbar = document.getElementById('navbar');
+            if (winScroll > 50) {
+                navbar.classList.add('shadow-lg', 'shadow-brand-900/20');
+            } else {
+                navbar.classList.remove('shadow-lg', 'shadow-brand-900/20');
+            }
+        });
+
+        // Functions
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+            // Close mobile menu if open
+            document.getElementById('mobileMenu').classList.add('hidden');
+        }
+
+        function startReading() {
+            scrollToSection('definitions');
+        }
+
+        function flipCard(index) {
+            const card = document.getElementById(`def-${index}`);
+            card.classList.toggle('flipped');
+        }
+
+        function flipAllCards() {
+            const cards = document.querySelectorAll('.definition-card');
+            const anyFlipped = Array.from(cards).some(c => c.classList.contains('flipped'));
+            cards.forEach(card => {
+                if (anyFlipped) {
+                    card.classList.remove('flipped');
+                } else {
+                    card.classList.add('flipped');
+                }
+            });
+        }
+
+        function expandAllDefs() {
+            const cards = document.querySelectorAll('.definition-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('flipped');
+                }, index * 50);
+            });
+        }
+
+        function markAsRead(index) {
+            const btn = document.getElementById(`check-${index}`);
+            const card = document.getElementById(`term-${index}`);
+            
+            btn.classList.add('text-green-500');
+            btn.classList.remove('text-brand-700');
+            card.classList.add('border-green-500/30', 'bg-green-900/10');
+            
+            // Create confetti
+            createConfetti(btn);
+        }
+
+        function createConfetti(element) {
+            const rect = element.getBoundingClientRect();
+            const colors = ['#7A263A', '#c13a5c', '#9c2f4a', '#ffffff'];
+            for (let i = 0; i < 12; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = rect.left + rect.width/2 + 'px';
+                confetti.style.top = rect.top + 'px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        function handleAgreement(checkbox) {
+            const successMsg = document.getElementById('successMessage');
+            if (checkbox.checked) {
+                successMsg.classList.remove('hidden');
+                createConfetti(checkbox.nextElementSibling);
+                
+                // Save to localStorage
+                localStorage.setItem('imtiaz_terms_agreed', new Date().toISOString());
+                
+                // Trigger celebration confetti
+                for(let i = 0; i < 5; i++) {
+                    setTimeout(() => {
+                        const fakeBtn = document.createElement('div');
+                        fakeBtn.style.position = 'fixed';
+                        fakeBtn.style.left = Math.random() * window.innerWidth + 'px';
+                        fakeBtn.style.top = Math.random() * window.innerHeight + 'px';
+                        document.body.appendChild(fakeBtn);
+                        createConfetti(fakeBtn);
+                        fakeBtn.remove();
+                    }, i * 200);
+                }
+            } else {
+                successMsg.classList.add('hidden');
+            }
+        }
+
+        function downloadPDF() {
+            // Create a temporary notification
+            const notif = document.createElement('div');
+            notif.className = 'fixed bottom-4 right-4 bg-brand-800 text-white px-6 py-3 rounded-lg shadow-lg border border-brand-600 z-50 flex items-center gap-2';
+            notif.innerHTML = '<i data-lucide="file-down" class="w-5 h-5"></i><span>Preparing PDF download...</span>';
+            document.body.appendChild(notif);
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                notif.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i><span>PDF ready for download!</span>';
+                lucide.createIcons();
+                setTimeout(() => notif.remove(), 2000);
+            }, 1500);
+        }
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Check if already agreed
+        window.addEventListener('load', () => {
+            const agreed = localStorage.getItem('imtiaz_terms_agreed');
+            if (agreed) {
+                const check = document.getElementById('agreeCheck');
+                check.checked = true;
+                handleAgreement(check);
+            }
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.term-card').forEach((el) => observer.observe(el));
+
+        // Close mobile menu on resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
